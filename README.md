@@ -108,7 +108,17 @@ Raphael Ngoy
 
 ## 📷 Preview
 
-> Add screenshots here for best Upwork presentation
+> Desktop view
+![Desktop1](https://github.com/user-attachments/assets/a72cf444-bf73-4c11-8fb0-35dda63b11c7)
+![Desktop4](https://github.com/user-attachments/assets/830a1373-ccc0-4a1e-a9b4-2e6abad9af5a)
+![Desktop3](https://github.com/user-attachments/assets/6be72693-507e-42de-9676-2ba411b65a1d)
+![Desktop2](https://github.com/user-attachments/assets/3538f122-ed27-4f7b-baec-16cd280809f5)
+
+> Mobile view
+![Mobile4](https://github.com/user-attachments/assets/32801744-3550-4e5a-933a-309043091b22)
+![Mobile3](https://github.com/user-attachments/assets/861b8e91-0063-4840-b6ab-b706c08b3799)
+![Mobile2](https://github.com/user-attachments/assets/602064fc-bb1b-436e-bd50-fff98f5d8226)
+![Mobile1](https://github.com/user-attachments/assets/a35ee920-0e21-43ef-b345-b09b554de56c)
 
 ---
 
