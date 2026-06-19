@@ -6,7 +6,7 @@ Designed with a **dark, futuristic SaaS-inspired UI** to demonstrate high-end fr
 ---
 
 ## 🌐 Live Demo
-https://yourusername.github.io/gift-of-music-foundation/
+[https://yourusername.github.io/gift-of-music-foundation/](https://raphael-ngoy.github.io/-gift-of-music-foundation/)
 
 ---
 
