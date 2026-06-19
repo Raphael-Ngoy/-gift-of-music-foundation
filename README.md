@@ -10,6 +10,8 @@ Designed with a **dark, futuristic SaaS-inspired UI** to demonstrate high-end fr
 
 https://gift-of-music-foundation.netlify.app/
 
+https://gift-of-music-foundation.vercel.app/
+
 ---
 
 ## 📌 Project Overview
