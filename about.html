@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift of Music Foundation - About</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Gift of Music Foundation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-title-banner about-title">
+        <div class="container">
+            <h1>About Us</h1>
+        </div>
+    </header>
+
+    <section class="content-section mission-section">
+        <div class="container split-layout">
+            <div class="content-text">
+                <h2>Our Mission</h2>
+                <p>The Gift of Music Foundation is dedicated to enriching lives through the universal language of music. We believe in its profound power to heal, educate, and inspire. Our mission is to provide accessible music programs and resources to underserved communities, fostering creativity, personal growth, and a sense of belonging.</p>
+                <p>We strive to create a world where everyone has the opportunity to experience the joy and transformative benefits of music, regardless of their circumstances.</p>
+            </div>
+            <div class="content-image">
+                <div class="image-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section story-section">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>Founded in 20XX by a group of passionate musicians and educators, the Gift of Music Foundation began with a simple idea: to share the gift of music with those who need it most. Witnessing the profound impact music had on individuals and communities, our founders were driven to create an organization that could systematically provide access to musical education, instruments, and therapeutic experiences.</p>
+            <p>Over the years, we have grown from a small volunteer-led initiative to a recognized charity, touching thousands of lives through our diverse programs. Every note played, every lesson taught, and every smile shared is a testament to the enduring power of music and the dedication of our supporters and volunteers.</p>
+            <p>We continue to evolve, seeking new ways to expand our reach and deepen our impact, always guided by our core belief in music's ability to uplift and transform.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gift of Music Foundation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const navbar = document.querySelector(".navbar");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navbar.contains(e.target)) {
+                navLinks.classList.remove("active");
+            }
+        });
+
+        // Close menu when clicking a nav link
+        const navLinkItems = document.querySelectorAll(".nav-links a");
+        navLinkItems.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+
+        const sections = document.querySelectorAll(".content-section, .preview-section");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
