@@ -125,7 +125,10 @@ Raphael Ngoy
 ![Mobile1](https://github.com/user-attachments/assets/a35ee920-0e21-43ef-b345-b09b554de56c)
 
 ---
+## Author
+
+Raphael Ngoy Full-Stack Developer (Aspiring Freelancer)
 
 ## 📜 License
 
-This project is for portfolio/demo purposes only.
+This project is for portfolio/learnig/demo purposes only.
