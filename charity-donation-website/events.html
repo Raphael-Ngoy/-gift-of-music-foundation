@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift of Music Foundation - Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Gift of Music Foundation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-title-banner events-title">
+        <div class="container">
+            <h1>Our Events</h1>
+        </div>
+    </header>
+
+    <section class="content-section events-section" id="events">
+        <div class="container">
+            <div class="event-card">
+                <span class="event-date">OCT 15, 2024</span>
+                <h3>Charity Music Workshop</h3>
+                <p>An interactive workshop bringing together aspiring musicians and seasoned professionals for a day of learning, collaboration, and creative expression.</p>
+                <a href="#" class="btn secondary">Join Event</a>
+            </div>
+            <div class="event-card">
+                <span class="event-date">NOV 08, 2024</span>
+                <h3>Community Concert Fundraiser</h3>
+                <p>Join us for an evening of live performances by local artists and talented students, all in support of our music education programs.</p>
+                <a href="#" class="btn secondary">Join Event</a>
+            </div>
+            <div class="event-card">
+                <span class="event-date">DEC 03, 2024</span>
+                <h3>Youth Music Training Day</h3>
+                <p>A dedicated day of intensive training and mentorship for young musicians, featuring masterclasses and performance opportunities.</p>
+                <a href="#" class="btn secondary">Join Event</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-branding">
+                <p>&copy; 2026 Gift of Music Foundation · v1.0.0</p>
+                <p class="developer">Designed & Developed by Raphael Ngoy<br>Full-Stack Developer</p>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/raphael-ngoy-a049a927b-a049a927b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Portfolio</span>
+                    </a>
+                    <a href="mailto:your-email@example.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const navbar = document.querySelector(".navbar");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navbar.contains(e.target)) {
+                navLinks.classList.remove("active");
+            }
+        });
+
+        // Close menu when clicking a nav link
+        const navLinkItems = document.querySelectorAll(".nav-links a");
+        navLinkItems.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+
+        const eventCards = document.querySelectorAll(".event-card");
+        const eventsSection = document.querySelector(".events-section");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        if (eventsSection) {
+            sectionObserver.observe(eventsSection);
+        }
+
+        eventCards.forEach(card => {
+            sectionObserver.observe(card);
+        });
+    </script>
+</body>
+</html>

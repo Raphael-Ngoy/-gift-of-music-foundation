@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift of Music Foundation - Donate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Gift of Music Foundation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-title-banner donate-title">
+        <div class="container">
+            <h1>Support Our Mission</h1>
+        </div>
+    </header>
+
+    <section class="content-section donate-explanation-section" id="donate">
+        <div class="container">
+            <h2>Your Contribution Makes a Difference</h2>
+            <p>Every donation, no matter the size, directly fuels our programs and initiatives. Your generosity helps us provide music education, instruments, and therapeutic experiences to those who need them most.</p>
+            <p>Together, we can continue to empower lives through the transformative power of music. Thank you for being a part of the Gift of Music Foundation family.</p>
+        </div>
+    </section>
+
+    <section class="content-section donation-form-section">
+        <div class="container">
+            <h2>Choose Your Impact</h2>
+            <div class="donation-amounts">
+                <button class="amount-btn" data-amount="10">$10</button>
+                <button class="amount-btn" data-amount="25">$25</button>
+                <button class="amount-btn" data-amount="50">$50</button>
+                <button class="amount-btn" data-amount="100">$100</button>
+            </div>
+            <div class="custom-amount">
+                <label for="custom-amount-input">Or enter a custom amount:</label>
+                <input type="number" id="custom-amount-input" placeholder="e.g., 75" min="1">
+            </div>
+            <div class="donate-button-wrapper">
+                <button class="btn primary donate-now-btn" id="donateNowBtn">Donate Now</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-branding">
+                <p>&copy; 2026 Gift of Music Foundation · v1.0.0</p>
+                <p class="developer">Designed & Developed by Raphael Ngoy<br>Full-Stack Developer</p>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/raphael-ngoy-a049a927b-a049a927b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Portfolio</span>
+                    </a>
+                    <a href="mailto:your-email@example.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const navbar = document.querySelector(".navbar");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navbar.contains(e.target)) {
+                navLinks.classList.remove("active");
+            }
+        });
+
+        // Close menu when clicking a nav link
+        const navLinkItems = document.querySelectorAll(".nav-links a");
+        navLinkItems.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+
+        const amountButtons = document.querySelectorAll(".amount-btn");
+        const customAmountInput = document.getElementById("custom-amount-input");
+        const donateNowBtn = document.getElementById("donateNowBtn");
+        let selectedAmount = 0;
+
+        amountButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                amountButtons.forEach(btn => btn.classList.remove("selected"));
+                button.classList.add("selected");
+                selectedAmount = parseInt(button.getAttribute("data-amount"));
+                customAmountInput.value = "";
+            });
+        });
+
+        customAmountInput.addEventListener("input", () => {
+            amountButtons.forEach(btn => btn.classList.remove("selected"));
+            selectedAmount = parseInt(customAmountInput.value) || 0;
+        });
+
+        donateNowBtn.addEventListener("click", () => {
+            if (selectedAmount > 0) {
+                const stripeUrl = `https://buy.stripe.com/test_placeholder?amount=${selectedAmount}`;
+                alert(`You are donating $${selectedAmount}. This is a demo portfolio transaction.\n\nIn production, you would be redirected to: ${stripeUrl}`);
+            } else {
+                alert("Please select or enter a donation amount.");
+            }
+        });
+
+        const sections = document.querySelectorAll(".content-section, .preview-section");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift of Music Foundation - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Gift of Music Foundation</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1>Empowering Lives Through Music</h1>
+            <p>We support communities by using music as a tool for healing, education, and hope.</p>
+            <div class="hero-buttons">
+                <a href="donate.html" class="btn primary">Donate Now</a>
+                <a href="about.html" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-section preview-section" id="about-preview">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>The Gift of Music Foundation is dedicated to bringing the transformative power of music to underserved communities. Through education, outreach, and therapy programs, we aim to inspire, heal, and unite individuals, fostering a brighter future for all.</p>
+            <a href="about.html" class="btn tertiary">Learn More About Us</a>
+        </div>
+    </section>
+
+    <section class="content-section preview-section" id="impact-preview">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <p>We believe in the profound ability of music to change lives. From providing instruments to aspiring young musicians to offering therapeutic sessions for those in need, our work creates lasting positive change. Join us in making a difference.</p>
+            <a href="services.html" class="btn tertiary">See Our Services</a>
+        </div>
+    </section>
+
+    <section class="content-section preview-section" id="events-preview">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <p>Discover how you can participate in our mission. From fundraising concerts to community workshops, our events offer unique opportunities to engage with the power of music and support a noble cause.</p>
+            <a href="events.html" class="btn tertiary">View All Events</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-branding">
+                <p>&copy; 2026 Gift of Music Foundation · v1.0.0</p>
+                <p class="developer">Designed & Developed by Raphael Ngoy<br>Full-Stack Developer</p>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/raphael-ngoy-a049a927b-a049a927b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Portfolio</span>
+                    </a>
+                    <a href="mailto:your-email@example.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const navbar = document.querySelector(".navbar");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!navbar.contains(e.target)) {
+                navLinks.classList.remove("active");
+            }
+        });
+
+        // Close menu when clicking a nav link
+        const navLinkItems = document.querySelectorAll(".nav-links a");
+        navLinkItems.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+
+        const sections = document.querySelectorAll(".content-section, .preview-section");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
